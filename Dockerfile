@@ -14,13 +14,10 @@ RUN apt-get update && \
     php7.0-curl \
     php7.0-json \
     php7.0-mbstring \
-    php7.0-mcrypt \
     php7.0-mysql \
     php7.0-xml \
     php7.0-xsl \
-    php7.0-zip \
-	curl \
-	zip
+    php7.0-zip
 
 # Enable apache mods.
 RUN a2enmod php7.0
@@ -44,6 +41,11 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 # Install Composer 
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" \
 	&& php /tmp/composer-setup.php --install-dir/usr/local/bin --filename=composer
+	
+# Install Symfony Installer
+RUN mkdir -p /usr/local/bin \
+	&& curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
+	&& chmod a+x /usr/local/bin/symfony
 	
 # Install NodeJs
 RUN apt-get install -y nodejs
