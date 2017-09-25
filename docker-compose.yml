@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+    httpd:
+      build: .
+      ports:
+        - 8180:80
+      networks:
+        - default
+      volumes:
+        - ./project:/var/www/html
+        - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+        
+    mysql:
+      image: mysql:latest
+      environment:
+        MYSQL_DATABASE: symfony
+        MYSQL_USER: admin
+        MYSQL_PASSWORD: ABcd1234
+        MYSQL_ROOT_PASSWORD: docker
+      ports:
+        - 3306:3306
+      networks:
+        - default
+      expose:
+        - "3306"
+      volumes:
+        - ./mysql:/var/lib/mysql
+        
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      ports:
+        - 8181:80
+      networks:
+        - default
+      environment:
+        PMA_USER: root
+        PMA_PASSWORD: docker
+        PMA_HOST: mysql
+    
+    python:
+      image: python:latest
+      networks:
+        - default
+            
+
+networks:
+    default:
