@@ -38,6 +38,15 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
+# Install Composer 
+RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" \
+	&& php /tmp/composer-setup.php --install-dir/usr/local/bin --filename=composer
+	
+# Install NodeJs
+RUN apt-get install -y nodejs
+
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
+
+WORKDIR /var/www/html
