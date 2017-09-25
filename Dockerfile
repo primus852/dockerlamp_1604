@@ -50,7 +50,8 @@ RUN mkdir -p /usr/local/bin \
 	&& chmod a+x /usr/local/bin/symfony
 	
 # Install NodeJs
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs \
+	npm
 
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
