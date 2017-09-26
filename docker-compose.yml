@@ -39,12 +39,6 @@ services:
         PMA_USER: root
         PMA_PASSWORD: docker
         PMA_HOST: mysql
-    
-    python:
-      image: python:latest
-      networks:
-        - default
-            
 
 networks:
     default:
