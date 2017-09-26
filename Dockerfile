@@ -57,6 +57,8 @@ RUN mkdir -p /usr/local/bin \
 RUN apt-get install -y nodejs \
 	npm
 
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
