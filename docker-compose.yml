@@ -16,7 +16,7 @@ services:
     mysql:
       image: mysql:latest
       environment:
-        MYSQL_DATABASE: symfony
+        MYSQL_DATABASE: project
         MYSQL_USER: admin
         MYSQL_PASSWORD: ABcd1234
         MYSQL_ROOT_PASSWORD: docker
