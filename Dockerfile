@@ -61,8 +61,8 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # Install PHPUnit
 RUN wget https://phar.phpunit.de/phpunit.phar
-chmod +x phpunit.phar
-mv phpunit.phar /usr/local/bin/phpunit
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
 
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
