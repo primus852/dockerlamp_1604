@@ -20,6 +20,7 @@ RUN apt-get update && \
     php7.0-xsl \
     php7.0-zip \
     curl \
+    wget \
     zip
 
 # Enable apache mods.
@@ -56,8 +57,12 @@ RUN mkdir -p /usr/local/bin \
 # Install NodeJs
 RUN apt-get install -y nodejs \
 	npm
-
 RUN ln -s /usr/bin/nodejs /usr/bin/node
+
+# Install PHPUnit
+RUN wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+mv phpunit.phar /usr/local/bin/phpunit
 
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
