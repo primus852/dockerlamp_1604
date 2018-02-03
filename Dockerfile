@@ -66,11 +66,6 @@ RUN mv phpunit.phar /usr/local/bin/phpunit
 
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+CMD chown -R www-data:www-data /var/www/html/var && /usr/sbin/apache2ctl -D FOREGROUND
 
 WORKDIR /var/www/html
-
-#Make temporary cache inside of container for symfony, increases speed, related to this issue https://github.com/docker/for-win/issues/188
-RUN mkdir -p /var/www/symfony/cache/dev
-RUN mkdir -p /var/www/symfony/logs/dev
-RUN chown -R www-data:www-data /var/www/symfony/
