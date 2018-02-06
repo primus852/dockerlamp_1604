@@ -19,6 +19,7 @@ RUN apt-get update && \
     php7.0-xml \
     php7.0-xsl \
     php7.0-zip \
+    php7.0-intl \
     curl \
     wget \
     zip
