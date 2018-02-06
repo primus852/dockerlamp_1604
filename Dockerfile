@@ -20,6 +20,8 @@ RUN apt-get update && \
     php7.0-xsl \
     php7.0-zip \
     php7.0-intl \
+    libxrender1 \
+    libxext6 \
     curl \
     wget \
     zip
