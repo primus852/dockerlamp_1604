@@ -26,7 +26,10 @@ RUN apt-get update && \
     libxext6 \
     curl \
     wget \
-    zip
+    zip \
+    xfonts-base \
+    xfonts-75dpi \
+    fontconfig
 
 # Enable apache mods.
 RUN a2enmod php7.0
@@ -69,6 +72,9 @@ RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 
+# Install WKHTMLTOX
+RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.xenial_amd64.deb
+RUN dpkg -i wkhtmltox_0.12.5-1.xenial_amd64.deb
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD chown -R www-data:www-data /var/www/html/var && /usr/sbin/apache2ctl -D FOREGROUND
