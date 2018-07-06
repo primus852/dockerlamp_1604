@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Bartek Mis <bartek.mis@gmail.com>
+MAINTAINER PrimuS <findnibbler@gmail.com>
 
 # Install apache, PHP 7, and supplimentary programs. openssh-server, curl, and lynx-cur are for debugging the container.
 RUN apt-get update && \
@@ -21,6 +21,7 @@ RUN apt-get update && \
     php7.0-zip \
     php7.0-intl \
     php7.0-imap \
+    php7.0-soap \
     libxrender1 \
     libxext6 \
     curl \
