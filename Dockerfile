@@ -27,6 +27,7 @@ RUN apt-get update && \
     curl \
     wget \
     zip \
+    unzip \
     xfonts-base \
     xfonts-75dpi \
     fontconfig
